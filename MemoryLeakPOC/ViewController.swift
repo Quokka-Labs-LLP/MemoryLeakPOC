@@ -29,39 +29,3 @@ class ViewController: UIViewController {
     }
     
 }
-
-class Server {
-    var client: Client?
-    init(client: Client? = nil) {
-        self.client = client
-    }
-    
-    deinit {
-        print("\(Self.self) object was deallocated")
-    }
-}
- 
-class Client {
-    var server: Server?
-
-    init (server: Server) {
-        self.server = server
-    }
-    
-    deinit {
-        print("\(Self.self) object was deallocated")
-    }
-}
-
-class SecondViewController: UIViewController {
-    let server = Server()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .cyan
-        server.client = Client(server: server)
-    }
-    
-    deinit {
-        print("\(Self.self) object was deallocated")
-    }
-}
